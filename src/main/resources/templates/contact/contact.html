@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlsns:th="http://www.thymeleaf.org">
+
+    <head th:replace="common/header" :: common-header/>
+
+    <body>
+    <div th:replace="common/navbar" :: common-navbar />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="well">
+                    <div class="text-center">
+                        <form id="contactForm" th:action="@{/contact}"
+                              th:object="${feedback}"
+                              method="post"
+                              class="text-left">
+                            <div class="form-group">
+                                <label for="firstName" th:text="#{contact.form.firstName.text}" />
+                                <input type="text" id="firstName" th:field="*{firstName}" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" th:text="#{contact.form.lastName.text}" />
+                                <input type="text" id="lastName" th:field="*{lastName}" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" th:text="#{contact.form.email.text}" />
+                                <input type="email" id="email" th:field="*{email}" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" th:text="#{contact.form.feedback.text}" />
+                                <textarea id="message" th:field="*{message}" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" th:text="#{form.submit.text}" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.container -->
+
+    <div th:replace="common/header" :: before-body-script/>
+    </body>
+</html>
